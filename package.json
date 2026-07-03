@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
-    "start:backend": "bash backend/start.sh",
+    "start:backend": "cd backend && php artisan serve",
     "start:frontend": "npm run dev -w frontend",
     "build": "npm run build -w frontend",
     "lint": "npm run lint -w frontend"
