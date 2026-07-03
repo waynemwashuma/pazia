@@ -1,0 +1,23 @@
+{
+  "name": "chill_flix",
+  "version": "1.0.0",
+  "description": "A movie launch site",
+  "license": "MIT",
+  "author": "Wayne Mwashuma",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "bash backend/start.sh",
+    "start:frontend": "npm run dev -w frontend",
+    "build": "npm run build -w frontend",
+    "lint": "npm run lint -w frontend"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "dependencies": {
+    "concurrently": "^10.0.3"
+  }
+}
