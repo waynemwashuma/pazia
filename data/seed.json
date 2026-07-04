@@ -90,27 +90,6 @@
       "releaseVenue": "Prestige Cinema, Nairobi"
     },
     {
-      "id": 5,
-      "title": "Night Nurse",
-      "posterUrl": "https://image.tmdb.org/t/p/w500/tzhBAhN35YjobVG3Ubm3ERnzhBL.jpg",
-      "publicReleaseDate": "2026-07-10",
-      "description": "A tense psychological thriller set during a night shift where a caretaker begins doubting what is real.",
-      "director": "Georgia Bernstein",
-      "worldPremiere": "2026-07-04 — Fantasia Industry Screening, Montreal",
-      "categories": [
-        "Thriller",
-        "Horror"
-      ],
-      "mainCast": [
-        "Mimi Rogers",
-        "Bruce McKenzie",
-        "Eleonore Hendricks",
-        "Cemre Paksoy"
-      ],
-      "runtime": "96 min",
-      "releaseVenue": "Anga CBD, Nairobi"
-    },
-    {
       "id": 6,
       "title": "Mockbuster",
       "posterUrl": "https://image.tmdb.org/t/p/w500/wcjyHnvWtohsGrZHcNTEBwO2ooY.jpg",

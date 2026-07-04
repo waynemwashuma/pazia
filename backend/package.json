@@ -1,5 +1,10 @@
 {
     "$schema": "https://www.schemastore.org/package.json",
+    "name": "pazia-backend",
+    "version": "0.1.0",
+    "description": "Pazia Laravel asset pipeline",
+    "author": "Wayne Mwashuma",
+    "license": "MIT",
     "private": true,
     "type": "module",
     "scripts": {
