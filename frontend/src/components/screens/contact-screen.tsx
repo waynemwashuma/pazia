@@ -163,7 +163,7 @@ export function ContactScreen() {
                   onChange={(event) => updateField("name", event.target.value)}
                   aria-describedby={cn(helperIds.name, errors.name && "contact-name-error")}
                   aria-invalid={Boolean(errors.name)}
-                  className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-muted"
+                  className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-stone-400"
                   placeholder="Achieng Otieno"
                 />
                 <p id={helperIds.name} className="text-sm text-muted">
@@ -188,7 +188,7 @@ export function ContactScreen() {
                     errors.email && "contact-email-error",
                   )}
                   aria-invalid={Boolean(errors.email)}
-                  className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-muted"
+                  className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-stone-400"
                   placeholder="achieng@ukwelipictures.co.ke"
                 />
                 <p id={helperIds.email} className="text-sm text-muted">
@@ -204,7 +204,7 @@ export function ContactScreen() {
                   name="company"
                   value={values.company}
                   onChange={(event) => updateField("company", event.target.value)}
-                  className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-muted"
+                  className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-stone-400"
                   placeholder="Ukweli Pictures"
                 />
               </Field>
@@ -225,7 +225,10 @@ export function ContactScreen() {
                     errors.interest && "contact-interest-error",
                   )}
                   aria-invalid={Boolean(errors.interest)}
-                  className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground"
+                  className={cn(
+                    "w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm",
+                    values.interest ? "text-foreground" : "text-stone-400",
+                  )}
                 >
                   <option value="">Select a launch focus</option>
                   {interestOptions.map((option) => (
@@ -252,7 +255,7 @@ export function ContactScreen() {
                 value={values.notes}
                 onChange={(event) => updateField("notes", event.target.value)}
                 aria-describedby={helperIds.notes}
-                className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-muted"
+                className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-stone-400"
                 placeholder="A prestige thriller opening in autumn, with teaser timing and premiere-night strategy in scope."
               />
               <p id={helperIds.notes} className="text-sm text-muted">
