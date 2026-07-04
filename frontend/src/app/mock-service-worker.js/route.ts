@@ -18,21 +18,16 @@ function createMockServiceWorkerScript() {
 
     self.addEventListener("fetch", (event) => {
       const url = new URL(event.request.url);
-
-      if (!url.pathname.startsWith("/api/")) {
-        return;
-      }
-
-      event.respondWith(handleRequest(event.request, url));
-    });
-
-    async function handleRequest(request, url) {
       const pathname = stripBasePath(url.pathname);
 
       if (!pathname.startsWith("/api/")) {
         return;
       }
 
+      event.respondWith(handleRequest(event.request, pathname));
+    });
+
+    async function handleRequest(request, pathname) {
       if (request.method === "GET" && pathname === "/api/films") {
         await wait(420);
         return jsonResponse(sortFilms(FILMS));
