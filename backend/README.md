@@ -43,7 +43,7 @@ The backend creates:
 - `films`
 - `newsletter_submissions`
 
-Running `php artisan migrate --seed` loads a launch slate that mirrors the frontend mock data shape closely enough for the existing UI contract.
+Running `php artisan migrate --seed` loads a launch slate from [data/seed.json](/home/reign/Code/chill_flix/data/seed.json:1), so the backend seeder and frontend mocks share the same source data.
 
 ## API endpoints
 

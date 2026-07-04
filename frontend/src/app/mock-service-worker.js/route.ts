@@ -1,9 +1,13 @@
 import { mockFilms } from "@/lib/mock-data/films";
+import { getBasePath } from "@/lib/base-path";
 
 export const dynamic = "force-static";
 
 function createMockServiceWorkerScript() {
+  const basePath = getBasePath();
+
   return `
+    const BASE_PATH = ${JSON.stringify(basePath)};
     const FILMS = ${JSON.stringify(mockFilms)};
 
     self.addEventListener("install", () => self.skipWaiting());
@@ -23,12 +27,18 @@ function createMockServiceWorkerScript() {
     });
 
     async function handleRequest(request, url) {
-      if (request.method === "GET" && url.pathname === "/api/films") {
+      const pathname = stripBasePath(url.pathname);
+
+      if (!pathname.startsWith("/api/")) {
+        return;
+      }
+
+      if (request.method === "GET" && pathname === "/api/films") {
         await wait(420);
         return jsonResponse(sortFilms(FILMS));
       }
 
-      const filmMatch = url.pathname.match(/^\\/api\\/films\\/([^/]+)$/);
+      const filmMatch = pathname.match(/^\\/api\\/films\\/([^/]+)$/);
 
       if (request.method === "GET" && filmMatch) {
         await wait(520);
@@ -43,7 +53,7 @@ function createMockServiceWorkerScript() {
 
       if (
         request.method === "POST" &&
-        (url.pathname === "/api/newsletter" || url.pathname === "/api/contact")
+        (pathname === "/api/newsletter" || pathname === "/api/contact")
       ) {
         await wait(760);
         const payload = await request.json().catch(() => ({}));
@@ -76,6 +86,22 @@ function createMockServiceWorkerScript() {
       }
 
       return fetch(request);
+    }
+
+    function stripBasePath(pathname) {
+      if (!BASE_PATH) {
+        return pathname;
+      }
+
+      if (pathname === BASE_PATH) {
+        return "/";
+      }
+
+      if (pathname.startsWith(BASE_PATH + "/")) {
+        return pathname.slice(BASE_PATH.length) || "/";
+      }
+
+      return pathname;
     }
 
     function sortFilms(films) {

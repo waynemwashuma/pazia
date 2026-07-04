@@ -2,11 +2,19 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FilmDetailScreen } from "@/components/screens/film-detail-screen";
 import { companyProfile } from "@/content/site";
-import { getFilmBySlug } from "@/lib/api";
+import { getFilmBySlug, getFilms } from "@/lib/api";
 import { ApiError } from "@/lib/api/errors";
 
 interface FilmPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  const films = await getFilms();
+
+  return films.map((film) => ({
+    slug: film.slug,
+  }));
 }
 
 export async function generateMetadata({

@@ -2,8 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Support\FrontendSeedData;
 use Database\Seeders\FilmSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class FilmApiTest extends TestCase
@@ -13,15 +15,26 @@ class FilmApiTest extends TestCase
     public function test_it_lists_films_in_premiere_order(): void
     {
         $this->seed(FilmSeeder::class);
+        $seedFilms = FrontendSeedData::films();
+        $expectedFilms = array_map(
+            fn (array $film, int $index): array => [
+                'index' => $index,
+                'premiere_date' => Str::before($film['worldPremiere'], ' — '),
+                'slug' => Str::slug($film['title']),
+            ],
+            $seedFilms,
+            array_keys($seedFilms),
+        );
+
+        usort($expectedFilms, fn (array $left, array $right): int => [$left['premiere_date'], $left['index']] <=> [$right['premiere_date'], $right['index']]);
 
         $response = $this->getJson('/api/films');
 
         $response
             ->assertOk()
-            ->assertJsonCount(6)
-            ->assertJsonPath('0.slug', 'night-nurse')
-            ->assertJsonPath('1.slug', 'moana')
-            ->assertJsonPath('5.slug', 'the-odyssey');
+            ->assertJsonCount(count($expectedFilms))
+            ->assertJsonPath('0.slug', $expectedFilms[0]['slug'])
+            ->assertJsonPath((count($expectedFilms) - 1).'.slug', $expectedFilms[count($expectedFilms) - 1]['slug']);
 
         $response->assertJsonStructure([
             '*' => [

@@ -4,6 +4,7 @@ import {
   listMockFilms,
   submitMockNewsletterForm,
 } from "@/lib/api/mock-adapter";
+import { stripBasePath, withBasePath } from "@/lib/base-path";
 import { ensureMockServiceWorkerReady, shouldUseMockApi } from "@/lib/api/mock-browser";
 import type { Film, NewsletterReceipt, NewsletterSubmission } from "@/lib/api/types";
 
@@ -11,7 +12,7 @@ const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL?.trim() ?? "";
 
 function resolveApiUrl(path: string) {
   if (!apiBaseUrl) {
-    return path;
+    return withBasePath(path);
   }
 
   return new URL(path, apiBaseUrl).toString();
@@ -21,19 +22,20 @@ async function fallbackToLocalMock<T>(
   path: string,
   init?: RequestInit,
 ): Promise<T> {
+  const localPath = stripBasePath(path);
   const method = (init?.method ?? "GET").toUpperCase();
 
-  if (method === "GET" && path === "/api/films") {
+  if (method === "GET" && localPath === "/api/films") {
     return (await listMockFilms()) as T;
   }
 
-  if (method === "GET" && path.startsWith("/api/films/")) {
-    return (await getMockFilmBySlug(path.replace("/api/films/", ""))) as T;
+  if (method === "GET" && localPath.startsWith("/api/films/")) {
+    return (await getMockFilmBySlug(localPath.replace("/api/films/", ""))) as T;
   }
 
   if (
     method === "POST" &&
-    (path === "/api/newsletter" || path === "/api/contact")
+    (localPath === "/api/newsletter" || localPath === "/api/contact")
   ) {
     const submission = JSON.parse(String(init?.body ?? "{}")) as NewsletterSubmission;
     return (await submitMockNewsletterForm(submission)) as T;
@@ -52,15 +54,17 @@ async function parseErrorMessage(response: Response) {
 }
 
 export async function fetchJson<T>(path: string, init?: RequestInit): Promise<T> {
+  const requestUrl = resolveApiUrl(path);
+
   if (typeof window !== "undefined" && shouldUseMockApi()) {
     try {
       await ensureMockServiceWorkerReady();
     } catch {
-      return fallbackToLocalMock<T>(path, init);
+      return fallbackToLocalMock<T>(requestUrl, init);
     }
   }
 
-  const response = await fetch(resolveApiUrl(path), {
+  const response = await fetch(requestUrl, {
     ...init,
     cache: "no-store",
     headers: {

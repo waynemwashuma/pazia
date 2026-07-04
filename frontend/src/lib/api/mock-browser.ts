@@ -1,4 +1,6 @@
-const MOCK_SERVICE_WORKER_PATH = "/mock-service-worker.js?v=1";
+import { withBasePath } from "@/lib/base-path";
+
+const MOCK_SERVICE_WORKER_PATH = withBasePath("/mock-service-worker.js?v=1");
 
 let serviceWorkerReadyPromise: Promise<void> | null = null;
 
