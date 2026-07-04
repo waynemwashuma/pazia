@@ -164,7 +164,7 @@ export function ContactScreen() {
                   aria-describedby={cn(helperIds.name, errors.name && "contact-name-error")}
                   aria-invalid={Boolean(errors.name)}
                   className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-muted"
-                  placeholder="Jordan Lee"
+                  placeholder="Achieng Otieno"
                 />
                 <p id={helperIds.name} className="text-sm text-muted">
                   We use this to address the bulletin and any follow-up notes.
@@ -189,7 +189,7 @@ export function ContactScreen() {
                   )}
                   aria-invalid={Boolean(errors.email)}
                   className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-muted"
-                  placeholder="jordan@studio.example"
+                  placeholder="achieng@ukwelipictures.co.ke"
                 />
                 <p id={helperIds.email} className="text-sm text-muted">
                   Teaser drops, premiere dates, and opening-week updates land here.
@@ -205,7 +205,7 @@ export function ContactScreen() {
                   value={values.company}
                   onChange={(event) => updateField("company", event.target.value)}
                   className="w-full rounded-2xl border border-line bg-black/30 px-4 py-3 text-sm text-foreground placeholder:text-muted"
-                  placeholder="Northline Pictures"
+                  placeholder="Ukweli Pictures"
                 />
               </Field>
 

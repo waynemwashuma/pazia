@@ -1,6 +1,6 @@
 # Backend Deployment Guide
 
-I treat this backend as a small Laravel 13 JSON API for the Pazia frontend. It serves the film slate, stores newsletter/contact submissions, and uses the shared seed file at [`../data/seed.json`](../data/seed.json).
+I treat this backend as a small Laravel 13 JSON API for the Kenya-based Pazia frontend. It serves the film slate, stores newsletter/contact submissions, and uses the shared seed file at [`../data/seed.json`](../data/seed.json).
 
 ## What this service does
 
@@ -46,9 +46,9 @@ At minimum I set these in `.env`:
 APP_NAME="Pazia API"
 APP_ENV=production
 APP_DEBUG=false
-APP_URL=https://api.example.com
+APP_URL=https://api.pazia.co.ke
 
-CORS_ALLOWED_ORIGINS=https://app.example.com
+CORS_ALLOWED_ORIGINS=https://pazia.co.ke,https://www.pazia.co.ke
 
 DB_CONNECTION=sqlite
 DB_DATABASE=/absolute/path/to/backend/database/database.sqlite
@@ -143,11 +143,11 @@ CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 ## Smoke tests after deploy
 
 ```bash
-curl https://api.example.com/api/films
-curl https://api.example.com/api/films/moana
-curl -X POST https://api.example.com/api/newsletter \
+curl https://api.pazia.co.ke/api/films
+curl https://api.pazia.co.ke/api/films/moana
+curl -X POST https://api.pazia.co.ke/api/newsletter \
   -H 'Content-Type: application/json' \
-  -d '{"name":"Jordan Lee","email":"jordan@studio.example","interest":"Premiere strategy","notes":"Need teaser timing support."}'
+  -d '{"name":"Achieng Otieno","email":"achieng@ukwelipictures.co.ke","interest":"Premiere strategy","notes":"Need teaser timing support for the Nairobi rollout."}'
 ```
 
 Expected newsletter response:

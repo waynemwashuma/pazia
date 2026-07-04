@@ -1,6 +1,6 @@
 # Pazia
 
-Pazia is a small monorepo with a Next.js frontend in [`frontend/`](frontend/) and a Laravel API in [`backend/`](backend/). Both sides share the same fictional film-launch dataset through [`data/seed.json`](data/seed.json).
+Pazia is a Kenyan film-launch monorepo with a Next.js frontend in [`frontend/`](frontend/) and a Laravel API in [`backend/`](backend/). Both sides share the same fictional film-launch dataset through [`data/seed.json`](data/seed.json).
 
 ## Repository structure
 

@@ -2,12 +2,12 @@ export const companyProfile = {
   name: "Pazia",
   label: "Film launch house",
   description:
-    "Pazia stages red-carpet premieres, teaser drops, and press campaigns for films that need a world-class arrival.",
+    "Pazia stages premiere nights, teaser drops, and press campaigns for films opening across Kenya and East Africa.",
   heroStatement: "We do not release films. We stage their arrival.",
   heroCopy:
-    "Pazia builds the night a film enters culture: premiere architecture, teaser timing, press choreography, and launch strategy tuned for opening-week momentum.",
-  contactEmail: "concierge@pazia.example",
-  contactPhone: "+1 (310) 555-0186",
+    "Pazia builds the night a film enters culture: premiere architecture, teaser timing, press choreography, and launch strategy tuned for Nairobi opening-week momentum and regional reach.",
+  contactEmail: "concierge@pazia.co.ke",
+  contactPhone: "+254 20 765 4321",
   locations: ["Nairobi", "Mombasa", "Kisumu"],
 } as const;
 

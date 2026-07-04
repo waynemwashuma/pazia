@@ -78,8 +78,8 @@ class FilmApiTest extends TestCase
             ->assertOk()
             ->assertJsonPath('slug', 'moana')
             ->assertJsonPath('featured', true)
-            ->assertJsonPath('venue', 'El Capitan Theatre')
-            ->assertJsonPath('city', 'Hollywood');
+            ->assertJsonPath('venue', 'Kenya National Theatre')
+            ->assertJsonPath('city', 'Nairobi');
     }
 
     public function test_it_returns_a_json_404_for_unknown_slugs(): void

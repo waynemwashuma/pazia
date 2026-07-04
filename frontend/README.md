@@ -1,6 +1,6 @@
 # Frontend
 
-This frontend is a Next.js 16 app for the Pazia experience. It has five public routes:
+This frontend is a Next.js 16 app for the Pazia experience, framed around a Kenyan film-launch market. It has five public routes:
 
 - `/`
 - `/films`
@@ -112,7 +112,7 @@ NEXT_PUBLIC_ENABLE_MOCK_API=true STATIC_EXPORT=true npm run build
 
 ```bash
 cd frontend
-NEXT_PUBLIC_API_URL=https://api.example.com \
+NEXT_PUBLIC_API_URL=https://api.pazia.co.ke \
 NEXT_PUBLIC_ENABLE_MOCK_API=false \
 STATIC_EXPORT=true \
 npm run build

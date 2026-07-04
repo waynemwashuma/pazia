@@ -13,9 +13,9 @@ class NewsletterSubmissionApiTest extends TestCase
     public function test_it_persists_a_newsletter_submission(): void
     {
         $response = $this->postJson('/api/newsletter', [
-            'name' => 'Jordan Lee',
-            'email' => 'jordan@studio.example',
-            'company' => 'Northline Pictures',
+            'name' => 'Achieng Otieno',
+            'email' => 'achieng@ukwelipictures.co.ke',
+            'company' => 'Ukweli Pictures',
             'interest' => 'Premiere strategy',
             'notes' => 'Need teaser timing support.',
         ]);
@@ -26,9 +26,9 @@ class NewsletterSubmissionApiTest extends TestCase
             ->assertJsonPath('message', 'You are on the bulletin for teaser drops, premiere dates, and opening-night notes.');
 
         $this->assertDatabaseHas('newsletter_submissions', [
-            'name' => 'Jordan Lee',
-            'email' => 'jordan@studio.example',
-            'company' => 'Northline Pictures',
+            'name' => 'Achieng Otieno',
+            'email' => 'achieng@ukwelipictures.co.ke',
+            'company' => 'Ukweli Pictures',
             'interest' => 'Premiere strategy',
             'message' => 'Need teaser timing support.',
             'source' => 'newsletter',
@@ -38,8 +38,8 @@ class NewsletterSubmissionApiTest extends TestCase
     public function test_it_supports_the_contact_alias_route(): void
     {
         $response = $this->postJson('/api/contact', [
-            'name' => 'Jordan Lee',
-            'email' => 'jordan@studio.example',
+            'name' => 'Achieng Otieno',
+            'email' => 'achieng@ukwelipictures.co.ke',
             'message' => 'Premiere night support needed.',
         ]);
 

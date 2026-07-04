@@ -25,7 +25,7 @@ class FilmSeeder extends Seeder
                     'logline' => $film['description'],
                     'synopsis' => $this->buildSynopsis($film),
                     'poster_image' => $film['posterUrl'],
-                    'trailer_url' => "https://trailers.pazia.example/{$slug}",
+                    'trailer_url' => "https://trailers.pazia.co.ke/{$slug}",
                     'premiere_date' => $this->premiereDate($film),
                     'release_date' => $film['publicReleaseDate'],
                     'runtime_minutes' => $this->runtimeMinutes($film),

@@ -1,7 +1,7 @@
 {
   "name": "pazia",
   "version": "1.0.0",
-  "description": "Pazia monorepo for the frontend and backend applications",
+  "description": "Pazia Kenyan film launch monorepo for the frontend and backend applications",
   "license": "MIT",
   "author": "Wayne Mwashuma",
   "type": "module",

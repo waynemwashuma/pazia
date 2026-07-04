@@ -4,7 +4,7 @@ import { SiteShell } from "@/components/site-shell";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pazia.example"),
+  metadataBase: new URL("https://pazia.co.ke"),
   title: {
     default: `${companyProfile.name} | ${companyProfile.label}`,
     template: `%s | ${companyProfile.name}`,
